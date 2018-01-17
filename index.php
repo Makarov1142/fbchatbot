@@ -1,6 +1,6 @@
 <?php
-$access_token = "<ACCESS TOKEN>";
-$verify_token = "fb_chat_bot";
+$access_token = "EAAH04OGgVVMBAMJmaN2OC2aZBPcjkzxZCD8GXo4kyLw7W0zc9krezVoPZCXG6h2Oh2dgyfYXDZBBBT95qBas0RHFDasEEZCHJH0vHZAqhMY3fZBLw13d1K416n4lJF3EjZCrz04ZARMAyu1FkjQPcW8qAYXMbcZAU46xkLGVRZCJX4EagZDZD";
+$verify_token = "f_chat_bot";
 $hub_verify_token = null;
 if(isset($_REQUEST['hub_challenge'])) {
  $challenge = $_REQUEST['hub_challenge'];
