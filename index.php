@@ -1,6 +1,6 @@
 <?php
 $access_token = "<ACCESS TOKEN>";
-$verify_token = "yellow_duck";
+$verify_token = "fb_chat_bot";
 $hub_verify_token = null;
 if(isset($_REQUEST['hub_challenge'])) {
  $challenge = $_REQUEST['hub_challenge'];
