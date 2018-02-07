@@ -44,7 +44,7 @@ if (strpos($message, 'สอนเรา') !== false) {
     );
     $context = stream_context_create($opts);
     $returnValue = file_get_contents($url,false,$context);
-    $message_to_reply = 'ขอบคุณที่สอนเรา';
+    $message_to_reply = 'ขอบคุณที่สอนเรานะ';
   }
 }else{
   if($isData >0){
