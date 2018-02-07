@@ -19,7 +19,7 @@ $message_to_reply = '';
 
 $api_key="pa4iX2vuy7y_rf5uA4jrDw8cW2de3xVj";
 $url = 'https://api.mlab.com/api/1/databases/unknowdb/collections/chatbot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/chatbot/collections/chatbot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
+$json = file_get_contents('https://api.mlab.com/api/1/databases/unknowdb/collections/chatbot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
 if (strpos($message, 'สอนเรา') !== false) {
