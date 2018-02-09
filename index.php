@@ -13,9 +13,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
 $message_to_reply = '';
-/**
- * Some Basic rules to validate incoming messages
- */
+//Some Basic rules to validate incoming messages
 
 $api_key="pa4iX2vuy7y_rf5uA4jrDw8cW2de3xVj";
 $url = 'https://api.mlab.com/api/1/databases/unknowdb/collections/chatbot?apiKey='.$api_key.'';
@@ -52,14 +50,14 @@ if (strpos($message, 'สอนเรา') !== false) {
      $message_to_reply = $rec->answer;
    }
   }else{
-    $message_to_reply = 'เป็นยังไงบ้าง มีอะไรให้เราช่วยไหม ? คุณสามารถสอนให้เราฉลาดได้นะ เพียงแค่พิมพ์: สอนเรา[คำถาม|คำตอบ]';
+    $message_to_reply = 'เป็นไงบ้าง มีอะไรให้ช่วยไหม ? คุณสามารถสอนให้ฉลาดได้นะ เพียงแค่พิมพ์: สอนเรา[คำถาม|คำตอบ]';
   }
 }
 //API Url
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
-//Initiate cURL.
+//Initiate cURL
 $ch = curl_init($url);
-//The JSON data.
+//The JSON data
 $jsonData = '{
     "recipient":{
         "id":"'.$sender.'"
@@ -68,11 +66,11 @@ $jsonData = '{
         "text":"'.$message_to_reply.'"
     }
 }';
-//Encode the array into JSON.
+//Encode the array into JSON
 $jsonDataEncoded = $jsonData;
-//Tell cURL that we want to send a POST request.
+//Tell cURL that we want to send a POST request
 curl_setopt($ch, CURLOPT_POST, 1);
-//Attach our encoded JSON string to the POST fields.
+//Attach our encoded JSON string to the POST fields
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
 //Set the content type to application/json
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
