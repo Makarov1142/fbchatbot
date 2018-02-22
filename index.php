@@ -74,7 +74,7 @@ return $arr[1];
 }
 
 //นำเข้าข้อมูลตามต้องการ
-$url = "https://www.whois.com/whois/$input";
+$url = "https://www.whois.com/whois/$message";
 $contents = get_url_contents($url);
 
 //(.com เท่านั้น)
