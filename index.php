@@ -14,6 +14,7 @@ $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
 $message_to_reply = '';
 //Some Basic rules to validate incoming messages
+
 $api_key="pa4iX2vuy7y_rf5uA4jrDw8cW2de3xVj";
 $url = 'https://api.mlab.com/api/1/databases/unknowdb/collections/chatbot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/unknowdb/collections/chatbot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
@@ -52,36 +53,6 @@ if (strpos($message, 'สอนเรา') !== false) {
     $message_to_reply = 'เป็นไงบ้าง มีอะไรให้ช่วยไหม ? คุณสามารถสอนให้ฉลาดได้นะ เพียงแค่พิมพ์: สอนเรา[คำถาม|คำตอบ]';
   }
 }
-
-//cURL ส่วนเพิ่มเติม
-function get_url_contents($url){
-$crl = curl_init();
-$timeout = 5;
-curl_setopt ($crl, CURLOPT_URL,$url);
-curl_setopt ($crl, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt ($crl, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
-$ret = curl_exec($crl);
-curl_close($crl);
-return $ret;
-}
-
-//คำสั่งตัดส่วนที่ไม่ต้องการ
-function get_string($string,$start,$end){
-$arr = explode($end,$string);
-$arr = explode($start,$arr[0]);
-return $arr[1];
-}
-
-//นำเข้าข้อมูลตามต้องการ
-$url = "https://www.whois.com/whois/$message";
-$contents = get_url_contents($url);
-
-//(.com เท่านั้น)
-$text =  get_string($contents,"Raw Whois Data","</pre></div>");
-header("Content-Type: text/html; charset=utf-8");
-echo $message_to_reply = '';
-
 //API Url
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
 //Initiate cURL
